@@ -139,6 +139,13 @@ api:
         - dfplayer.random
 <<<<<<< HEAD
 
+    - service: battery_level_percent
+      variables:
+        level_percent: int
+      then:
+        - tm1651.set_level_percent:
+            id: tm1651_battery
+            level_percent: !lambda 'return level_percent;'
     - service: battery_level
       variables:
         level: int
@@ -153,8 +160,19 @@ api:
         - tm1651.set_brightness:
             id: tm1651_battery
             brightness: !lambda 'return brightness;'
+<<<<<<< HEAD
 =======
 >>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
+=======
+    - service: battery_turn_on
+      then:
+        - tm1651.turn_on:
+            id: tm1651_battery
+    - service: battery_turn_on
+      then:
+        - tm1651.turn_off:
+            id: tm1651_battery
+>>>>>>> eb895d2095861a4d51f1a5fcd582a97389c27b4f
 
 wifi:
   ssid: 'MySSID'
