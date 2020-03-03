@@ -179,8 +179,13 @@ def run_external_command(func, *cmd, **kwargs):
     except SystemExit as err:
         return err.args[0]
     except Exception as err:  # pylint: disable=broad-except
+<<<<<<< HEAD
         _LOGGER.error("Running command failed: %s", err)
         _LOGGER.error("Please try running %s locally.", full_cmd)
+=======
+        _LOGGER.error(u"Running command failed: %s", err)
+        _LOGGER.error(u"Please try running %s locally.", full_cmd)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
         return 1
     finally:
         sys.argv = orig_argv
@@ -212,8 +217,13 @@ def run_external_process(*cmd, **kwargs):
                                stdout=sub_stdout,
                                stderr=sub_stderr)
     except Exception as err:  # pylint: disable=broad-except
+<<<<<<< HEAD
         _LOGGER.error("Running command failed: %s", err)
         _LOGGER.error("Please try running %s locally.", full_cmd)
+=======
+        _LOGGER.error(u"Running command failed: %s", err)
+        _LOGGER.error(u"Please try running %s locally.", full_cmd)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
         return 1
     finally:
         if capture_stdout:

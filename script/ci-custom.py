@@ -7,6 +7,7 @@ import os.path
 import re
 import subprocess
 import sys
+import re
 
 
 def find_all(a_str, sub):
@@ -104,7 +105,11 @@ def lint_re_check(regex, **kwargs):
                 err = func(fname, match)
                 if err is None:
                     continue
+<<<<<<< HEAD
                 errors.append(f"{err} See line {lineno}.")
+=======
+                errors.append("{} See line {}.".format(err, lineno))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
             return errors
         return decor(new_func)
     return decorator
@@ -176,7 +181,11 @@ CPP_RE_EOL = r'\s*?(?://.*?)?$'
 
 
 def highlight(s):
+<<<<<<< HEAD
     return f'\033[36m{s}\033[0m'
+=======
+    return '\033[36m{}\033[0m'.format(s)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 
 @lint_re_check(r'^#define\s+([a-zA-Z0-9_]+)\s+([0-9bx]+)' + CPP_RE_EOL,
@@ -302,7 +311,11 @@ def lint_relative_py_import(fname):
 def lint_namespace(fname, content):
     expected_name = re.match(r'^esphome/components/([^/]+)/.*',
                              fname.replace(os.path.sep, '/')).group(1)
+<<<<<<< HEAD
     search = f'namespace {expected_name}'
+=======
+    search = 'namespace {}'.format(expected_name)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     if search in content:
         return None
     return 'Invalid namespace found in C++ file. All integration C++ files should put all ' \

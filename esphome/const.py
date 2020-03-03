@@ -1,10 +1,17 @@
 """Constants used by esphome."""
 
 MAJOR_VERSION = 1
+<<<<<<< HEAD
 MINOR_VERSION = 15
 PATCH_VERSION = '0-dev'
 __short_version__ = f'{MAJOR_VERSION}.{MINOR_VERSION}'
 __version__ = f'{__short_version__}.{PATCH_VERSION}'
+=======
+MINOR_VERSION = 14
+PATCH_VERSION = '3'
+__short_version__ = '{}.{}'.format(MAJOR_VERSION, MINOR_VERSION)
+__version__ = '{}.{}'.format(__short_version__, PATCH_VERSION)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 ESP_PLATFORM_ESP32 = 'ESP32'
 ESP_PLATFORM_ESP8266 = 'ESP8266'
@@ -125,7 +132,10 @@ CONF_DELTA = 'delta'
 CONF_DEVICE = 'device'
 CONF_DEVICE_CLASS = 'device_class'
 CONF_DIMENSIONS = 'dimensions'
+<<<<<<< HEAD
 CONF_DIO_PIN = 'dio_pin'
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 CONF_DIR_PIN = 'dir_pin'
 CONF_DIRECTION = 'direction'
 CONF_DISCOVERY = 'discovery'
@@ -434,7 +444,10 @@ CONF_STOP_ACTION = 'stop_action'
 CONF_SUBNET = 'subnet'
 CONF_SUPPORTS_COOL = 'supports_cool'
 CONF_SUPPORTS_HEAT = 'supports_heat'
+<<<<<<< HEAD
 CONF_SWING_MODE = 'swing_mode'
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 CONF_SWITCHES = 'switches'
 CONF_SYNC = 'sync'
 CONF_TAG = 'tag'
@@ -513,7 +526,10 @@ ICON_BRIEFCASE_DOWNLOAD = 'mdi:briefcase-download'
 ICON_BRIGHTNESS_5 = 'mdi:brightness-5'
 ICON_CHECK_CIRCLE_OUTLINE = 'mdi:check-circle-outline'
 ICON_CHEMICAL_WEAPON = 'mdi:chemical-weapon'
+<<<<<<< HEAD
 ICON_COUNTER = 'mdi:counter'
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 ICON_CURRENT_AC = 'mdi:current-ac'
 ICON_EMPTY = ''
 ICON_FLASH = 'mdi:flash'
@@ -534,7 +550,11 @@ ICON_RULER = 'mdi:ruler'
 ICON_SCALE = 'mdi:scale'
 ICON_SCREEN_ROTATION = 'mdi:screen-rotation'
 ICON_SIGN_DIRECTION = 'mdi:sign-direction'
+<<<<<<< HEAD
 ICON_SIGNAL = 'mdi:signal-distance-variant'
+=======
+ICON_SIGNAL = 'mdi: signal-distance-variant'
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 ICON_SIGNAL_DISTANCE_VARIANT = 'mdi:signal'
 ICON_THERMOMETER = 'mdi:thermometer'
 ICON_TIMER = 'mdi:timer'
@@ -549,11 +569,17 @@ UNIT_AMPERE = 'A'
 UNIT_CELSIUS = '°C'
 UNIT_COUNTS_PER_CUBIC_METER = '#/m³'
 UNIT_DECIBEL = 'dB'
+<<<<<<< HEAD
 UNIT_DECIBEL_MILLIWATT = 'dBm'
 UNIT_DEGREE_PER_SECOND = '°/s'
 UNIT_DEGREES = '°'
 UNIT_EMPTY = ''
 UNIT_G = 'G'
+=======
+UNIT_DEGREE_PER_SECOND = u'°/s'
+UNIT_DEGREES = u'°'
+UNIT_EMPTY = ''
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 UNIT_HECTOPASCAL = 'hPa'
 UNIT_HERTZ = 'hz'
 UNIT_KELVIN = 'K'
@@ -561,12 +587,20 @@ UNIT_KILOMETER = 'km'
 UNIT_KILOMETER_PER_HOUR = 'km/h'
 UNIT_LUX = 'lx'
 UNIT_METER = 'm'
+<<<<<<< HEAD
 UNIT_METER_PER_SECOND_SQUARED = 'm/s²'
 UNIT_MICROGRAMS_PER_CUBIC_METER = 'µg/m³'
 UNIT_MICROMETER = 'µm'
 UNIT_MICROSIEMENS_PER_CENTIMETER = 'µS/cm'
 UNIT_MICROTESLA = 'µT'
 UNIT_OHM = 'Ω'
+=======
+UNIT_METER_PER_SECOND_SQUARED = u'm/s²'
+UNIT_MICROGRAMS_PER_CUBIC_METER = u'µg/m³'
+UNIT_MICROSIEMENS_PER_CENTIMETER = u'µS/cm'
+UNIT_MICROTESLA = u'µT'
+UNIT_OHM = u'Ω'
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 UNIT_PARTS_PER_BILLION = 'ppb'
 UNIT_PARTS_PER_MILLION = 'ppm'
 UNIT_PERCENT = '%'

@@ -11,6 +11,7 @@ const uint8_t COOLIX_TEMP_MAX = 30;  // Celsius
 
 class CoolixClimate : public climate_ir::ClimateIR {
  public:
+<<<<<<< HEAD
   CoolixClimate()
       : climate_ir::ClimateIR(COOLIX_TEMP_MIN, COOLIX_TEMP_MAX, 1.0f, true, true,
                               {climate::CLIMATE_FAN_AUTO, climate::CLIMATE_FAN_LOW, climate::CLIMATE_FAN_MEDIUM,
@@ -25,6 +26,9 @@ class CoolixClimate : public climate_ir::ClimateIR {
       this->swing_mode = climate::CLIMATE_SWING_OFF;
     climate_ir::ClimateIR::control(call);
   }
+=======
+  CoolixClimate() : climate_ir::ClimateIR(COOLIX_TEMP_MIN, COOLIX_TEMP_MAX) {}
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
  protected:
   /// Transmit via IR the state of this climate controller.

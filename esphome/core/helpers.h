@@ -180,7 +180,10 @@ ParseOnOffState parse_on_off(const char *str, const char *on = nullptr, const ch
 
 // Encode raw data to a human-readable string (for debugging)
 std::string hexencode(const uint8_t *data, uint32_t len);
+<<<<<<< HEAD
 template<typename T> std::string hexencode(const T &data) { return hexencode(data.data(), data.size()); }
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 // https://stackoverflow.com/questions/7858817/unpacking-a-tuple-to-call-a-matching-function-pointer/7858971#7858971
 template<int...> struct seq {};                                       // NOLINT

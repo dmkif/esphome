@@ -12,6 +12,10 @@ from esphome.const import CONF_BAUD_RATE, CONF_BROKER, CONF_LOGGER, CONF_OTA, \
     CONF_PASSWORD, CONF_PORT, CONF_ESPHOME, CONF_PLATFORMIO_OPTIONS
 from esphome.core import CORE, EsphomeError, coroutine, coroutine_with_priority
 from esphome.helpers import color, indent
+<<<<<<< HEAD
+=======
+from esphome.py_compat import IS_PY2, safe_input, IS_PY3
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 from esphome.util import run_external_command, run_external_process, safe_print, list_yaml_files
 
 _LOGGER = logging.getLogger(__name__)
@@ -157,6 +161,7 @@ def compile_program(args, config):
 def upload_using_esptool(config, port):
     path = CORE.firmware_bin
     first_baudrate = config[CONF_ESPHOME][CONF_PLATFORMIO_OPTIONS].get('upload_speed', 460800)
+<<<<<<< HEAD
 
     def run_esptool(baud_rate):
         cmd = ['esptool.py', '--before', 'default_reset', '--after', 'hard_reset',
@@ -170,6 +175,21 @@ def upload_using_esptool(config, port):
 
         return run_external_process(*cmd)
 
+=======
+
+    def run_esptool(baud_rate):
+        cmd = ['esptool.py', '--before', 'default_reset', '--after', 'hard_reset',
+               '--baud', str(baud_rate),
+               '--chip', 'esp8266', '--port', port, 'write_flash', '0x0', path]
+
+        if os.environ.get('ESPHOME_USE_SUBPROCESS') is None:
+            import esptool
+            # pylint: disable=protected-access
+            return run_external_command(esptool._main, *cmd)
+
+        return run_external_process(*cmd)
+
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     rc = run_esptool(first_baudrate)
     if rc == 0 or first_baudrate == 115200:
         return rc
@@ -371,7 +391,11 @@ def command_update_all(args):
         middle_text = f" {middle_text} "
         width = len(click.unstyle(middle_text))
         half_line = "=" * ((twidth - width) // 2)
+<<<<<<< HEAD
         click.echo(f"{half_line}{middle_text}{half_line}")
+=======
+        click.echo("%s%s%s" % (half_line, middle_text, half_line))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
     for f in files:
         print("Updating {}".format(color('cyan', f)))
@@ -516,10 +540,21 @@ def run_esphome(argv):
         _LOGGER.error("Missing configuration parameter, see esphome --help.")
         return 1
 
+<<<<<<< HEAD
     if sys.version_info < (3, 6, 0):
         _LOGGER.error("You're running ESPHome with Python <3.6. ESPHome is no longer compatible "
                       "with this Python version. Please reinstall ESPHome with Python 3.6+")
         return 1
+=======
+    if IS_PY2:
+        _LOGGER.warning("You're using ESPHome with python 2. Support for python 2 is deprecated "
+                        "and will be removed in 1.15.0. Please reinstall ESPHome with python 3.6 "
+                        "or higher.")
+    elif IS_PY3 and sys.version_info < (3, 6, 0):
+        _LOGGER.warning("You're using ESPHome with python 3.5. Support for python 3.5 is "
+                        "deprecated and will be removed in 1.15.0. Please reinstall ESPHome with "
+                        "python 3.6 or higher.")
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
     if args.command in PRE_CONFIG_ACTIONS:
         try:

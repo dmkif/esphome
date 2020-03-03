@@ -12,6 +12,7 @@ from esphome.const import CONF_BROKER, CONF_DISCOVERY_PREFIX, CONF_ESPHOME, \
     CONF_TOPIC, CONF_TOPIC_PREFIX, CONF_USERNAME
 from esphome.core import CORE, EsphomeError
 from esphome.helpers import color
+from esphome.py_compat import decode_text
 from esphome.util import safe_print
 
 _LOGGER = logging.getLogger(__name__)
@@ -63,11 +64,17 @@ def initialize(config, subscriptions, on_message, username, password, client_id)
                        tls_version=tls_version, ciphers=None)
 
     try:
+<<<<<<< HEAD
         host = str(config[CONF_MQTT][CONF_BROKER])
         port = int(config[CONF_MQTT][CONF_PORT])
         client.connect(host, port)
     except OSError as err:
         raise EsphomeError(f"Cannot connect to MQTT broker: {err}")
+=======
+        client.connect(str(config[CONF_MQTT][CONF_BROKER]), config[CONF_MQTT][CONF_PORT])
+    except socket.error as err:
+        raise EsphomeError("Cannot connect to MQTT broker: {}".format(err))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
     try:
         client.loop_forever()
@@ -93,8 +100,13 @@ def show_logs(config, topic=None, username=None, password=None, client_id=None):
     _LOGGER.info("Starting log output from %s", topic)
 
     def on_message(client, userdata, msg):
+<<<<<<< HEAD
         time_ = datetime.now().time().strftime('[%H:%M:%S]')
         payload = msg.payload.decode(errors='backslashreplace')
+=======
+        time_ = datetime.now().time().strftime(u'[%H:%M:%S]')
+        payload = decode_text(msg.payload)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
         message = time_ + payload
         safe_print(message)
 
@@ -125,7 +137,11 @@ def clear_topic(config, topic, username=None, password=None, client_id=None):
 
 # From marvinroger/async-mqtt-client -> scripts/get-fingerprint/get-fingerprint.py
 def get_fingerprint(config):
+<<<<<<< HEAD
     addr = str(config[CONF_MQTT][CONF_BROKER]), int(config[CONF_MQTT][CONF_PORT])
+=======
+    addr = str(config[CONF_MQTT][CONF_BROKER]), config[CONF_MQTT][CONF_PORT]
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     _LOGGER.info("Getting fingerprint from %s:%s", addr[0], addr[1])
     try:
         cert_pem = ssl.get_server_certificate(addr)

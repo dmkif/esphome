@@ -98,7 +98,12 @@ def run_upload(config, verbose, port):
 
 def run_idedata(config):
     args = ['-t', 'idedata']
+<<<<<<< HEAD
     stdout = run_platformio_cli_run(config, False, *args, capture_stdout=True).decode()
+=======
+    stdout = run_platformio_cli_run(config, False, *args, capture_stdout=True)
+    stdout = decode_text(stdout)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     match = re.search(r'{\s*".*}', stdout)
     if match is None:
         _LOGGER.debug("Could not match IDEData for %s", stdout)
@@ -169,7 +174,11 @@ def _decode_pc(config, addr):
         return
     command = [idedata.addr2line_path, '-pfiaC', '-e', idedata.firmware_elf_path, addr]
     try:
+<<<<<<< HEAD
         translation = subprocess.check_output(command).decode().strip()
+=======
+        translation = decode_text(subprocess.check_output(command)).strip()
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     except Exception:  # pylint: disable=broad-except
         _LOGGER.debug("Caught exception for command %s", command, exc_info=1)
         return

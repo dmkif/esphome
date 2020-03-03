@@ -28,6 +28,10 @@ import tornado.websocket
 from esphome import const, util
 from esphome.__main__ import get_serial_ports
 from esphome.helpers import mkdir_p, get_bool_env, run_system_command
+<<<<<<< HEAD
+=======
+from esphome.py_compat import IS_PY2, decode_text, encode_text
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 from esphome.storage_json import EsphomeStorageJSON, StorageJSON, \
     esphome_storage_path, ext_storage_path, trash_storage_path
 from esphome.util import shlex_quote
@@ -83,8 +87,13 @@ class DashboardSettings:
         if username != self.username:
             return False
 
+<<<<<<< HEAD
         password = hmac.new(password.encode()).digest()
         return username == self.username and hmac.compare_digest(self.password_digest, password)
+=======
+        password_digest = hmac.new(encode_text(password)).digest()
+        return hmac.compare_digest(self.password_digest, password_digest)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
     def rel_path(self, *args):
         return os.path.join(self.config_dir, *args)
@@ -601,8 +610,13 @@ class LoginHandler(BaseHandler):
             'X-HASSIO-KEY': os.getenv('HASSIO_TOKEN'),
         }
         data = {
+<<<<<<< HEAD
             'username': self.get_argument('username', ''),
             'password': self.get_argument('password', '')
+=======
+            'username': decode_text(self.get_argument('username', '')),
+            'password': decode_text(self.get_argument('password', ''))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
         }
         try:
             req = requests.post('http://hassio/auth', headers=headers, data=data)
@@ -619,8 +633,13 @@ class LoginHandler(BaseHandler):
         self.render_login_page(error="Invalid username or password")
 
     def post_native_login(self):
+<<<<<<< HEAD
         username = self.get_argument("username", '')
         password = self.get_argument("password", '')
+=======
+        username = decode_text(self.get_argument("username", ''))
+        password = decode_text(self.get_argument("password", ''))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
         if settings.check_password(username, password):
             self.set_secure_cookie("authenticated", cookie_authenticated_yes)
             self.redirect("/")

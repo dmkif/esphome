@@ -315,6 +315,7 @@ std::string hexencode(const uint8_t *data, uint32_t len) {
   return res;
 }
 
+<<<<<<< HEAD
 #ifdef ARDUINO_ARCH_ESP8266
 ICACHE_RAM_ATTR InterruptLock::InterruptLock() { xt_state_ = xt_rsil(15); }
 ICACHE_RAM_ATTR InterruptLock::~InterruptLock() { xt_wsr_ps(xt_state_); }
@@ -324,4 +325,6 @@ ICACHE_RAM_ATTR InterruptLock::InterruptLock() { portDISABLE_INTERRUPTS(); }
 ICACHE_RAM_ATTR InterruptLock::~InterruptLock() { portENABLE_INTERRUPTS(); }
 #endif
 
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 }  // namespace esphome

@@ -17,6 +17,15 @@ matrix:
         - pylint esphome
     - python: "3.6"
       env: TARGET=Test3.6
+<<<<<<< HEAD
+=======
+      script:
+        - esphome tests/test1.yaml compile
+        - esphome tests/test2.yaml compile
+        - esphome tests/test3.yaml compile
+    - python: "2.7"
+      env: TARGET=Test2.7
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
       script:
         - esphome tests/test1.yaml compile
         - esphome tests/test2.yaml compile

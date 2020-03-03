@@ -295,6 +295,7 @@ void ICACHE_RAM_ATTR HOT ESP8266SoftwareSerial::write_byte(uint8_t data) {
     return;
   }
 
+<<<<<<< HEAD
   {
     InterruptLock lock;
     uint32_t wait = this->bit_time_;
@@ -314,6 +315,26 @@ void ICACHE_RAM_ATTR HOT ESP8266SoftwareSerial::write_byte(uint8_t data) {
     if (this->stop_bits_ == 2)
       this->wait_(&wait, start);
   }
+=======
+  disable_interrupts();
+  uint32_t wait = this->bit_time_;
+  const uint32_t start = ESP.getCycleCount();
+  // Start bit
+  this->write_bit_(false, &wait, start);
+  this->write_bit_(data & (1 << 0), &wait, start);
+  this->write_bit_(data & (1 << 1), &wait, start);
+  this->write_bit_(data & (1 << 2), &wait, start);
+  this->write_bit_(data & (1 << 3), &wait, start);
+  this->write_bit_(data & (1 << 4), &wait, start);
+  this->write_bit_(data & (1 << 5), &wait, start);
+  this->write_bit_(data & (1 << 6), &wait, start);
+  this->write_bit_(data & (1 << 7), &wait, start);
+  // Stop bit
+  this->write_bit_(true, &wait, start);
+  if (this->stop_bits_ == 2)
+    this->wait_(&wait, start);
+  enable_interrupts();
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 }
 void ICACHE_RAM_ATTR ESP8266SoftwareSerial::wait_(uint32_t *wait, const uint32_t &start) {
   while (ESP.getCycleCount() - start < *wait)

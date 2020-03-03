@@ -2,9 +2,14 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import sensor, spi
 from esphome.const import \
+<<<<<<< HEAD
     CONF_ID, CONF_VOLTAGE, CONF_CURRENT, CONF_POWER, CONF_POWER_FACTOR, CONF_FREQUENCY, \
     ICON_FLASH, ICON_LIGHTBULB, ICON_CURRENT_AC, ICON_THERMOMETER, \
     UNIT_HERTZ, UNIT_VOLT, UNIT_AMPERE, UNIT_WATT, UNIT_EMPTY, UNIT_CELSIUS, UNIT_VOLT_AMPS_REACTIVE
+=======
+    CONF_ID, CONF_VOLTAGE, CONF_CURRENT, CONF_POWER, CONF_FREQUENCY, \
+    ICON_FLASH, UNIT_VOLT, UNIT_AMPERE, UNIT_WATT, UNIT_HERTZ, ICON_CURRENT_AC
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 CONF_PHASE_A = 'phase_a'
 CONF_PHASE_B = 'phase_b'
@@ -46,7 +51,10 @@ CONFIG_SCHEMA = cv.Schema({
     cv.Optional(CONF_PHASE_B): ATM90E32_PHASE_SCHEMA,
     cv.Optional(CONF_PHASE_C): ATM90E32_PHASE_SCHEMA,
     cv.Optional(CONF_FREQUENCY): sensor.sensor_schema(UNIT_HERTZ, ICON_CURRENT_AC, 1),
+<<<<<<< HEAD
     cv.Optional(CONF_CHIP_TEMPERATURE): sensor.sensor_schema(UNIT_CELSIUS, ICON_THERMOMETER, 1),
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     cv.Required(CONF_LINE_FREQUENCY): cv.enum(LINE_FREQS, upper=True),
     cv.Optional(CONF_GAIN_PGA, default='2X'): cv.enum(PGA_GAINS, upper=True),
 }).extend(cv.polling_component_schema('60s')).extend(spi.SPI_DEVICE_SCHEMA)

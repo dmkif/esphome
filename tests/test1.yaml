@@ -593,6 +593,7 @@ sensor:
       accuracy_decimals: 1
     address: 0x58
     update_interval: 5s
+<<<<<<< HEAD
   - platform: sps30
     pm_1_0:
       name: "Workshop PM <1µm Weight concentration"
@@ -623,6 +624,8 @@ sensor:
       id: "workshop_PMC_10_0"
     address: 0x69
     update_interval: 10s
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   - platform: shtcx
     temperature:
       name: "Living Room Temperature 10"

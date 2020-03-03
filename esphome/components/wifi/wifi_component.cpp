@@ -37,7 +37,11 @@ void WiFiComponent::setup() {
   if (this->has_sta()) {
     this->wifi_sta_pre_setup_();
     if (this->output_power_.has_value() && !this->wifi_apply_output_power_(*this->output_power_)) {
+<<<<<<< HEAD
       ESP_LOGV(TAG, "Setting Output Power Option failed!");
+=======
+      ESP_LOGV(TAG, "Setting Power Save Option failed!");
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     }
 
     if (!this->wifi_apply_power_save_()) {
@@ -53,7 +57,11 @@ void WiFiComponent::setup() {
   } else if (this->has_ap()) {
     this->setup_ap_config_();
     if (this->output_power_.has_value() && !this->wifi_apply_output_power_(*this->output_power_)) {
+<<<<<<< HEAD
       ESP_LOGV(TAG, "Setting Output Power Option failed!");
+=======
+      ESP_LOGV(TAG, "Setting Power Save Option failed!");
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     }
 #ifdef USE_CAPTIVE_PORTAL
     if (captive_portal::global_captive_portal != nullptr)

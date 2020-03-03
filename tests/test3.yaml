@@ -137,6 +137,7 @@ api:
     - service: dfplayer_random
       then:
         - dfplayer.random
+<<<<<<< HEAD
 
     - service: battery_level
       variables:
@@ -152,6 +153,8 @@ api:
         - tm1651.set_brightness:
             id: tm1651_battery
             brightness: !lambda 'return brightness;'
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 wifi:
   ssid: 'MySSID'
@@ -666,6 +669,7 @@ dfplayer:
             dfplayer.is_playing
         then:
           logger.log: 'Playback finished event'
+<<<<<<< HEAD
 tm1651:
   id: tm1651_battery
   clk_pin: D6
@@ -684,3 +688,5 @@ rf_bridge:
         high: 0x1234
         code: 0x123456
     - rf_bridge.learn
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b

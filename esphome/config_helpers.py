@@ -1,8 +1,17 @@
+<<<<<<< HEAD
+=======
+from __future__ import print_function
+
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 import json
 import os
 
 from esphome.core import CORE
 from esphome.helpers import read_file
+<<<<<<< HEAD
+=======
+from esphome.py_compat import safe_input
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 
 def read_config_file(path):

@@ -13,8 +13,12 @@ class SGP30Component : public PollingComponent, public i2c::I2CDevice {
  public:
   void set_eco2_sensor(sensor::Sensor *eco2) { eco2_sensor_ = eco2; }
   void set_tvoc_sensor(sensor::Sensor *tvoc) { tvoc_sensor_ = tvoc; }
+<<<<<<< HEAD
   void set_eco2_baseline(uint16_t eco2_baseline) { eco2_baseline_ = eco2_baseline; }
   void set_tvoc_baseline(uint16_t tvoc_baseline) { tvoc_baseline_ = tvoc_baseline; }
+=======
+  void set_baseline(uint16_t baseline) { baseline_ = baseline; }
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   void set_humidity_sensor(sensor::Sensor *humidity) { humidity_sensor_ = humidity; }
   void set_temperature_sensor(sensor::Sensor *temperature) { temperature_sensor_ = temperature; }
 
@@ -29,7 +33,11 @@ class SGP30Component : public PollingComponent, public i2c::I2CDevice {
   void send_env_data_();
   void read_iaq_baseline_();
   bool is_sensor_baseline_reliable_();
+<<<<<<< HEAD
   void write_iaq_baseline_(uint16_t eco2_baseline, uint16_t tvoc_baseline);
+=======
+  void write_iaq_baseline_(uint16_t baseline);
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   uint8_t sht_crc_(uint8_t data1, uint8_t data2);
   uint64_t serial_number_;
   uint16_t featureset_;
@@ -45,8 +53,12 @@ class SGP30Component : public PollingComponent, public i2c::I2CDevice {
 
   sensor::Sensor *eco2_sensor_{nullptr};
   sensor::Sensor *tvoc_sensor_{nullptr};
+<<<<<<< HEAD
   uint16_t eco2_baseline_{0x0000};
   uint16_t tvoc_baseline_{0x0000};
+=======
+  uint16_t baseline_{0x0000};
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   /// Input sensor for humidity and temperature compensation.
   sensor::Sensor *humidity_sensor_{nullptr};
   sensor::Sensor *temperature_sensor_{nullptr};

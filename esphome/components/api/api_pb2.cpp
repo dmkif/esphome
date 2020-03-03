@@ -112,6 +112,7 @@ template<> const char *proto_enum_to_string<enums::ClimateMode>(enums::ClimateMo
       return "UNKNOWN";
   }
 }
+<<<<<<< HEAD
 template<> const char *proto_enum_to_string<enums::ClimateFanMode>(enums::ClimateFanMode value) {
   switch (value) {
     case enums::CLIMATE_FAN_ON:
@@ -152,6 +153,10 @@ template<> const char *proto_enum_to_string<enums::ClimateSwingMode>(enums::Clim
 }
 template<> const char *proto_enum_to_string<enums::ClimateAction>(enums::ClimateAction value) {
   switch (value) {
+=======
+template<> const char *proto_enum_to_string<enums::ClimateAction>(enums::ClimateAction value) {
+  switch (value) {
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     case enums::CLIMATE_ACTION_OFF:
       return "CLIMATE_ACTION_OFF";
     case enums::CLIMATE_ACTION_COOLING:
@@ -2664,6 +2669,7 @@ bool ClimateStateResponse::decode_varint(uint32_t field_id, ProtoVarInt value) {
     }
     case 8: {
       this->action = value.as_enum<enums::ClimateAction>();
+<<<<<<< HEAD
       return true;
     }
     case 9: {
@@ -2672,6 +2678,8 @@ bool ClimateStateResponse::decode_varint(uint32_t field_id, ProtoVarInt value) {
     }
     case 10: {
       this->swing_mode = value.as_enum<enums::ClimateSwingMode>();
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
       return true;
     }
     default:
@@ -2713,8 +2721,11 @@ void ClimateStateResponse::encode(ProtoWriteBuffer buffer) const {
   buffer.encode_float(6, this->target_temperature_high);
   buffer.encode_bool(7, this->away);
   buffer.encode_enum<enums::ClimateAction>(8, this->action);
+<<<<<<< HEAD
   buffer.encode_enum<enums::ClimateFanMode>(9, this->fan_mode);
   buffer.encode_enum<enums::ClimateSwingMode>(10, this->swing_mode);
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 }
 void ClimateStateResponse::dump_to(std::string &out) const {
   char buffer[64];
@@ -2754,6 +2765,7 @@ void ClimateStateResponse::dump_to(std::string &out) const {
 
   out.append("  action: ");
   out.append(proto_enum_to_string<enums::ClimateAction>(this->action));
+<<<<<<< HEAD
   out.append("\n");
 
   out.append("  fan_mode: ");
@@ -2762,6 +2774,8 @@ void ClimateStateResponse::dump_to(std::string &out) const {
 
   out.append("  swing_mode: ");
   out.append(proto_enum_to_string<enums::ClimateSwingMode>(this->swing_mode));
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   out.append("\n");
   out.append("}");
 }

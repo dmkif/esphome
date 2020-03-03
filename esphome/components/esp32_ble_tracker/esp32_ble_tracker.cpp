@@ -203,6 +203,13 @@ void ESP32BLETracker::gap_scan_result(const esp_ble_gap_cb_param_t::ble_scan_res
   }
 }
 
+<<<<<<< HEAD
+=======
+std::string hexencode_string(const std::string &raw_data) {
+  return hexencode(reinterpret_cast<const uint8_t *>(raw_data.c_str()), raw_data.size());
+}
+
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 ESPBTUUID::ESPBTUUID() : uuid_() {}
 ESPBTUUID ESPBTUUID::from_uint16(uint16_t uuid) {
   ESPBTUUID ret;
@@ -313,6 +320,7 @@ void ESPBTDevice::parse_scan_rst(const esp_ble_gap_cb_param_t::ble_scan_result_e
   for (auto &uuid : this->service_uuids_) {
     ESP_LOGVV(TAG, "  Service UUID: %s", uuid.to_string().c_str());
   }
+<<<<<<< HEAD
   for (auto &data : this->manufacturer_datas_) {
     ESP_LOGVV(TAG, "  Manufacturer data: %s", hexencode(data.data).c_str());
   }
@@ -323,6 +331,17 @@ void ESPBTDevice::parse_scan_rst(const esp_ble_gap_cb_param_t::ble_scan_result_e
   }
 
   ESP_LOGVV(TAG, "Adv data: %s", hexencode(param.ble_adv, param.adv_data_len + param.scan_rsp_len).c_str());
+=======
+  ESP_LOGVV(TAG, "  Manufacturer data: %s", hexencode_string(this->manufacturer_data_).c_str());
+  ESP_LOGVV(TAG, "  Service data: %s", hexencode_string(this->service_data_).c_str());
+
+  if (this->service_data_uuid_.has_value()) {
+    ESP_LOGVV(TAG, "  Service Data UUID: %s", this->service_data_uuid_->to_string().c_str());
+  }
+
+  ESP_LOGVV(TAG, "Adv data: %s",
+            hexencode_string(std::string(reinterpret_cast<const char *>(param.ble_adv), param.adv_data_len)).c_str());
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 #endif
 }
 void ESPBTDevice::parse_adv_(const esp_ble_gap_cb_param_t::ble_scan_result_evt_param &param) {

@@ -3,6 +3,11 @@ import codecs
 import logging
 import os
 
+<<<<<<< HEAD
+=======
+from esphome.py_compat import char_to_byte, text_type, IS_PY2, encode_text
+
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 _LOGGER = logging.getLogger(__name__)
 
 
@@ -86,7 +91,11 @@ def mkdir_p(path):
             pass
         else:
             from esphome.core import EsphomeError
+<<<<<<< HEAD
             raise EsphomeError(f"Error creating directories {path}: {err}")
+=======
+            raise EsphomeError(u"Error creating directories {}: {}".format(path, err))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 
 def is_ip_address(host):
@@ -162,10 +171,17 @@ def read_file(path):
             return f_handle.read()
     except OSError as err:
         from esphome.core import EsphomeError
+<<<<<<< HEAD
         raise EsphomeError(f"Error reading file {path}: {err}")
     except UnicodeDecodeError as err:
         from esphome.core import EsphomeError
         raise EsphomeError(f"Error reading file {path}: {err}")
+=======
+        raise EsphomeError(u"Error reading file {}: {}".format(path, err))
+    except UnicodeDecodeError as err:
+        from esphome.core import EsphomeError
+        raise EsphomeError(u"Error reading file {}: {}".format(path, err))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 
 def _write_file(path, text):
@@ -174,17 +190,31 @@ def _write_file(path, text):
     mkdir_p(directory)
 
     tmp_path = None
+<<<<<<< HEAD
     data = text
     if isinstance(text, str):
         data = text.encode()
+=======
+    data = encode_text(text)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     try:
         with tempfile.NamedTemporaryFile(mode="wb", dir=directory, delete=False) as f_handle:
             tmp_path = f_handle.name
             f_handle.write(data)
         # Newer tempfile implementations create the file with mode 0o600
         os.chmod(tmp_path, 0o644)
+<<<<<<< HEAD
         # If destination exists, will be overwritten
         os.replace(tmp_path, path)
+=======
+        if IS_PY2:
+            if os.path.exists(path):
+                os.remove(path)
+            os.rename(tmp_path, path)
+        else:
+            # If destination exists, will be overwritten
+            os.replace(tmp_path, path)
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     finally:
         if tmp_path is not None and os.path.exists(tmp_path):
             try:
@@ -218,7 +248,11 @@ def copy_file_if_changed(src, dst):
         shutil.copy(src, dst)
     except OSError as err:
         from esphome.core import EsphomeError
+<<<<<<< HEAD
         raise EsphomeError(f"Error copying file {src} to {dst}: {err}")
+=======
+        raise EsphomeError(u"Error copying file {} to {}: {}".format(src, dst, err))
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 
 def list_starts_with(list_, sub):
@@ -253,6 +287,7 @@ def file_compare(path1, path2):
             if not blob1:
                 # Reached end
                 return True
+<<<<<<< HEAD
 
 
 # A dict of types that need to be converted to heaptypes before a class can be added
@@ -297,3 +332,5 @@ def add_class_to_obj(value, cls):
             if type(value) is type_:  # pylint: disable=unidiomatic-typecheck
                 return add_class_to_obj(func(value), cls)
         raise
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b

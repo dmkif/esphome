@@ -458,7 +458,11 @@ def time_period_str_unit(value):
                       "'{0}s'?".format(value))
     if isinstance(value, TimePeriod):
         value = str(value)
+<<<<<<< HEAD
     if not isinstance(value, str):
+=======
+    if not isinstance(value, string_types):
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
         raise Invalid("Expected string for time period with unit.")
 
     unit_to_kwarg = {
@@ -601,6 +605,7 @@ def float_with_unit(quantity, regex_suffix, optional_unit=False):
     return validator
 
 
+<<<<<<< HEAD
 frequency = float_with_unit("frequency", "(Hz|HZ|hz)?")
 resistance = float_with_unit("resistance", "(Ω|Ω|ohm|Ohm|OHM)?")
 current = float_with_unit("current", "(a|A|amp|Amp|amps|Amps|ampere|Ampere)?")
@@ -612,6 +617,32 @@ _temperature_c = float_with_unit("temperature", "(°C|° C|°|C)?")
 _temperature_k = float_with_unit("temperature", "(° K|° K|K)?")
 _temperature_f = float_with_unit("temperature", "(°F|° F|F)?")
 decibel = float_with_unit("decibel", "(dB|dBm|db|dbm)", optional_unit=True)
+=======
+frequency = float_with_unit("frequency", u"(Hz|HZ|hz)?")
+resistance = float_with_unit("resistance", u"(Ω|Ω|ohm|Ohm|OHM)?")
+current = float_with_unit("current", u"(a|A|amp|Amp|amps|Amps|ampere|Ampere)?")
+voltage = float_with_unit("voltage", u"(v|V|volt|Volts)?")
+distance = float_with_unit("distance", u"(m)")
+framerate = float_with_unit("framerate", u"(FPS|fps|Fps|FpS|Hz)")
+angle = float_with_unit("angle", u"(°|deg)", optional_unit=True)
+_temperature_c = float_with_unit("temperature", u"(°C|° C|°|C)?")
+_temperature_k = float_with_unit("temperature", u"(° K|° K|K)?")
+_temperature_f = float_with_unit("temperature", u"(°F|° F|F)?")
+decibel = float_with_unit("decibel", u"(dB|dBm|db|dbm)", optional_unit=True)
+
+if IS_PY2:
+    # Override voluptuous invalid to unicode for py2
+    def _vol_invalid_unicode(self):
+        path = u' @ data[%s]' % u']['.join(map(repr, self.path)) \
+            if self.path else u''
+        # pylint: disable=no-member
+        output = decode_text(self.message)
+        if self.error_type:
+            output += u' for ' + self.error_type
+        return output + path
+
+    Invalid.__unicode__ = _vol_invalid_unicode
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
 
 def temperature(value):

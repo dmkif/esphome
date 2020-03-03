@@ -50,9 +50,12 @@ class ClimateIR : public climate::Climate, public Component, public remote_base:
 
   /// Transmit via IR the state of this climate controller.
   virtual void transmit_state() = 0;
+<<<<<<< HEAD
 
   // Dummy implement on_receive so implementation is optional for inheritors
   bool on_receive(remote_base::RemoteReceiveData data) override { return false; };
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
 
   bool supports_cool_{true};
   bool supports_heat_{true};

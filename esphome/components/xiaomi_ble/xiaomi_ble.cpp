@@ -86,6 +86,10 @@ bool parse_xiaomi_service_data(XiaomiParseResult &result, const esp32_ble_tracke
     return false;
   }
 
+<<<<<<< HEAD
+=======
+  XiaomiParseResult result;
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   result.type = XiaomiParseResult::TYPE_HHCCJCY01;
   if (is_lywsdcgq) {
     result.type = XiaomiParseResult::TYPE_LYWSDCGQ;
@@ -105,7 +109,11 @@ bool parse_xiaomi_service_data(XiaomiParseResult &result, const esp32_ble_tracke
 
   const uint8_t *raw_data = &raw[raw_offset];
   uint8_t data_offset = 0;
+<<<<<<< HEAD
   uint8_t data_length = raw.size() - raw_offset;
+=======
+  uint8_t data_length = device.get_service_data().size() - raw_offset;
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   bool success = false;
 
   while (true) {
@@ -130,6 +138,7 @@ bool parse_xiaomi_service_data(XiaomiParseResult &result, const esp32_ble_tracke
     data_offset += 3 + datapoint_length;
   }
 
+<<<<<<< HEAD
   return success;
 }
 optional<XiaomiParseResult> parse_xiaomi(const esp32_ble_tracker::ESPBTDevice &device) {
@@ -139,6 +148,8 @@ optional<XiaomiParseResult> parse_xiaomi(const esp32_ble_tracker::ESPBTDevice &d
     if (parse_xiaomi_service_data(result, service_data))
       success = true;
   }
+=======
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
   if (!success)
     return {};
   return result;

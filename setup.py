@@ -28,7 +28,12 @@ REQUIRES = [
     'paho-mqtt==1.5.0',
     'colorlog==4.0.2',
     'tornado==5.1.1',
+<<<<<<< HEAD
     'protobuf==3.11.1',
+=======
+    'typing>=3.6.6;python_version<"3.6"',
+    'protobuf==3.10.0',
+>>>>>>> 53c231a7eb03cfacf0a67ec3809097d4d32d9a8b
     'tzlocal==2.0.0',
     'pytz==2019.3',
     'pyserial==3.4',
